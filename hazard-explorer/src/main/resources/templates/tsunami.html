@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tsunami List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header th:insert="~{fragments/tab :: header}"></header>
+<h2>Tsunami</h2>
+
+<form action="#" th:action="@{/tsunami}" th:object="${form}" method="post">
+    <div class="filter-row">
+        <label>Year Range:
+            <select th:field="*{startYear}">
+                <option value="">From</option>
+                <option th:each="y : ${yearOptions}" th:value="${y}" th:text="${y}"></option>
+            </select> -
+            <select th:field="*{endYear}">
+                <option value="">To</option>
+                <option th:each="y : ${yearOptions}" th:value="${y}" th:text="${y}"></option>
+            </select>
+        </label><br><br>
+    </div>
+    <div class="filter-row">
+        <label>Validity Range:
+            <select th:field="*{valMin}">
+                <option value="">Min</option>
+                <option th:each="v : ${validityOptions}" th:value="${v}" th:text="${v}"></option>
+            </select> - 
+            <select th:field="*{valMax}">
+                <option value="">Max</option>
+                <option th:each="v : ${validityOptions}" th:value="${v}" th:text="${v}"></option>
+            </select>
+        </label><br><br>
+
+        <label>Validity:
+            <select th:field="*{exactValidity}">
+                <option value="">select Validity</option>
+                <option th:each="v : ${validityOptions}" th:value="${v}" th:text="${v}"></option>
+            </select>
+        </label><br><br>
+    </div>
+    <div class="filter-row">
+        <label>Code Range:
+            <select th:field="*{codeMin}">
+                <option value="">Min</option>
+                <option th:each="c : ${codeOptions}" th:value="${c}" th:text="${c}"></option>
+            </select> - 
+            <select th:field="*{codeMax}">
+                <option value="">Max</option>
+                <option th:each="c : ${codeOptions}" th:value="${c}" th:text="${c}"></option>
+            </select>
+        </label><br><br>
+
+        <label>Code:
+            <select th:field="*{exactCode}">
+                <option value="">select Code</option>
+                <option th:each="c : ${codeOptions}" th:value="${c}" th:text="${c}"></option>
+            </select>
+        </label><br><br>
+    </div>
+    <div class="filter-actions">
+        <button type="submit" name="action">Search</button>
+        <a th:href="@{/tsunami}" class="btn-link">🔄Reset filters</a>
+        <a href="#" onclick="document.getElementById('saveForm').submit();" class="btn-link">💾 Save</a>
+    </div>
+</form>
+<form id="saveForm" th:action="@{/tsunami}" th:object="${form}" method="post" style="display:none;">
+    <input type="hidden" name="action" value="save" />
+    <input type="hidden" th:field="*{startYear}" />
+    <input type="hidden" th:field="*{endYear}" />
+    <input type="hidden" th:field="*{valMin}" />
+    <input type="hidden" th:field="*{valMax}" />
+    <input type="hidden" th:field="*{exactValidity}" />
+    <input type="hidden" th:field="*{codeMin}" />
+    <input type="hidden" th:field="*{codeMax}" />
+    <input type="hidden" th:field="*{exactCode}" />
+</form>
+
+<p th:text="${#lists.size(data)} + ' tsunamis'"></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Tsunami Event Validity</th>
+            <th>Tsunami Cause Code</th>
+            <th>Country</th>
+            <th>Location</th>
+            <th>Latitude, Longitude</th>
+            <th>Maximum Water Height (m)</th>
+            <th>Number of Runups</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="t : ${data}">
+            <td th:text="${t.getFormatDate()}">Date</td>
+            <td th:text="${t.validity}">Validity</td>
+            <td th:text="${t.code}">Code</td>
+            <td th:text="${t.country}">Country</td>
+            <td th:text="${t.location}">Location</td>
+            <td th:text="${t.latitude}+', '+${t.longitude}"></td>
+            <td th:text="${t.maxHeight}"></td>
+            <td th:text="${t.runup}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(data)}">
+            <td colspan="8" style="text-align:center;">No results found for the selected filters.</td>
+        </tr>          
+    </tbody>
+</table>
+</body>
+</html>

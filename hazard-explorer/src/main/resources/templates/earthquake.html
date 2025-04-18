@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earthquake List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header th:insert="~{fragments/tab :: header}"></header>
+<h2>Earthquake</h2>
+
+<form action="#" th:action="@{/earthquake}" th:object="${form}" method="post">
+    <div class="filter-row">
+        <label>Year Range:
+            <select th:field="*{startYear}">
+                <option value="">From</option>
+                <option th:each="y : ${yearOptions}" th:value="${y}" th:text="${y}"></option>
+            </select> -
+            <select th:field="*{endYear}">
+                <option value="">To</option>
+                <option th:each="y : ${yearOptions}" th:value="${y}" th:text="${y}"></option>
+            </select>
+        </label><br><br>
+        <label>Magnitude Range:
+            <select th:field="*{magMin}">
+                <option value="">Min</option>
+                <option th:each="m : ${magOptions}" th:value="${m}" th:text="${m}"></option>
+            </select> - 
+            <select th:field="*{magMax}">
+                <option value="">Max</option>
+                <option th:each="m : ${magOptions}" th:value="${m}" th:text="${m}"></option>
+            </select>
+        </label><br><br>
+    </div>
+    <div class="filter-actions">
+        <button type="submit" name="action" value="search">Search</button>
+        <a th:href="@{/earthquake}" class="btn-link">🔄 Reset filters</a>
+        <a href="#" onclick="document.getElementById('saveForm').submit();" class="btn-link">💾 Save</a>
+    </div>
+</form>
+
+<form id="saveForm" th:action="@{/earthquake}" th:object="${form}" method="post" style="display:none;">
+    <input type="hidden" name="action" value="save" />
+    <input type="hidden" th:field="*{startYear}" />
+    <input type="hidden" th:field="*{endYear}" />
+    <input type="hidden" th:field="*{magMin}" />
+    <input type="hidden" th:field="*{magMax}" />
+</form>
+
+<p th:text="${#lists.size(data)} + ' earthquakes'"></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Magnitude</th>
+            <th>Location</th>
+            <th>Focal Depth (km)</th>
+            <th>Latitude, Longitude</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="e : ${data}">
+            <td th:text="${e.getFormatDate()}">Date</td>
+            <td th:class="'magnitude-cell ' +
+                (${e.magnitude} &gt;= 8.5 ? 'mag-8-high' :
+                (${e.magnitude} &gt;= 8.0 ? 'mag-8-low' :
+                (${e.magnitude} &gt;= 7.5 ? 'mag-7-mid' : 'mag-7-low')))"
+            th:text="${e.magnitude}">Magnitude</td>
+            <td th:text="${e.location}">Location</td>
+            <td th:text="${e.depth}">Depth</td>
+            <td th:text="${e.latitude}+', '+${e.longitude}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(data)}">
+            <td colspan="5" style="text-align:center;">No results found for the selected filters.</td>
+        </tr>          
+    </tbody>
+</table>
+</body>
+</html>

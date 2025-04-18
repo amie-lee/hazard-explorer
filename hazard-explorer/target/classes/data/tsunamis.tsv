@@ -1,0 +1,13 @@
+"Search Parameters"	"Year"	"Mo"	"Dy"	"Hr"	"Mn"	"Sec"	"Tsunami Event Validity"	"Tsunami Cause Code"	"Earthquake Magnitude"	"Vol"	"More Info"	"Deposits"	"Country"	"Location Name"	"Latitude"	"Longitude"	"Maximum Water Height (m)"	"Number of Runups"	"Tsunami Magnitude (Abe)"	"Tsunami Magnitude (Iida)"	"Tsunami Intensity"	"Deaths"	"Death Description"	"Missing"	"Missing Description"	"Injuries"	"Injuries Description"	"Damage ($Mil)"	"Damage Description"	"Houses Destroyed"	"Houses Destroyed Description"	"Houses Damaged"	"Houses Damaged Description"	"Total Deaths"	"Total Death Description"	"Total Missing"	"Total Missing Description"	"Total Injuries"	"Total Injuries Description"	"Total Damage ($Mil)"	"Total Damage Description"	"Total Houses Destroyed"	"Total Houses Destroyed Description"	"Total Houses Damaged"	"Total Houses Damaged Description"																																												
+	2020	5	29	5	30		2	4		7504		0	"INDONESIA"	"LESSER SUNDA: BALI: IJEN VOLCANO"	-8.058	114.242	3	1																1	1										
+	2020	6	23	15	29	5	4	1	7.4			0	"MEXICO"	"OFF COAST OF OAXACA"	16.029	-95.901	1.57	9																10	1			24	1		4			8123	4
+	2020	10	30	11	51	27	4	1	7			0	"TURKEY"	"AEGEAN SEA"	37.918	26.79	5.3	268				1	1				1		2				1	118	3			1054	4	400	4		4		4
+	2021	3	4	19	28	31	4	1	8.1			0	"NEW ZEALAND"	"S OF RAOUL ISLAND, KERMADEC ISLANDS"	-29.74	-177.267	1	174																											
+	2022	1	15	4	14	45	4	6		7551		0	"TONGA"	"TONGA ISLANDS"	-20.536	-175.382	22	783				6	1			20	1	118.648	4	284	3	182	3	6	1			20	1	135.368	4	284	3	182	3
+	2022	9	19	18	5	6	4	1	7.6			0	"MEXICO"	"MEXICO"	18.367	-103.252	0.79	14																2	1			10	1	25	4	800	3	6084	4
+	2022	11	30	10	48	0	4	1	5.4			0	"NEW ZEALAND"	"LAKE TAUPO, NORTH ISLAND"	-38.808	175.906	1	4											1												1				
+	2023	9	16	12	35	3	4	8				0	"GREENLAND"	"DICKSON FJORD, GREENLAND"	72.81	-26.95	200	3										0.2	1											0.2	1				
+	2024	1	1	7	10	9	4	3	7.5			0	"JAPAN"	"HONSHU: W COAST"	37.487	137.271	7.23	401				2	1						3		3		3	549	3	2	1	1393	4	17600	4	29966	4	133758	4
+	2024	4	2	23	58	11	4	1	7.4			0	"TAIWAN"	"E. TAIWAN-RYUKYU ISLANDS"	23.819	121.562	1	12																20	1			1145	4	2500	4	111	3	297	3
+	2024	8	7	12	54	49	4	8				0	"USA"	"PEDERSEN LAGOON, AK"	59.904	-149.825	17	3											1												1				
+	2025	2					3	8				0	"ANTARCTICA"	"DALK GLACIER"	-69.417	76.45	1	1																											
