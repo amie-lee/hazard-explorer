@@ -1,2 +1,3 @@
-# hazard-explorer
-Hazard Explorer: A Web Tool for Filtering and Exporting Natural Disaster Data
+# Hazard Explorer
+> 2025-1 Problem Solving Programming   
+> A Web Tool for Filtering and Exporting Natural Disaster Data
